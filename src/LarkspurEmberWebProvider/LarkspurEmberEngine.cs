@@ -82,7 +82,7 @@ namespace LarkspurEmberWebProvider
               {
                 // TODO: do some essentials, like checking up on static data
             });
-            
+
             try
             {
                 while (!stoppingToken.IsCancellationRequested) // Keep the thread alive
@@ -111,7 +111,7 @@ namespace LarkspurEmberWebProvider
                         _configuration.EmberTree.Port,
                         _configuration.EmberTree.Identifier,
                         _configuration.EmberTree.Description);
-                    
+
                     _emberTree.ChangedTreeEvent += EmberTreeOnTreeDataAsync;
                     _emberTree.MatrixConnectionEvent += ReceivedMatrixConnectionEvent;
 
@@ -135,7 +135,7 @@ namespace LarkspurEmberWebProvider
                     string blindSourceName = "Off";
                     string[] targetNames = { "T1", "T2" };
                     _gpioMatrix = _emberTree.ProviderRoot.AddMatrixOneToNBlindSource(RootIdentifiers.Matrix, sourceNames, targetNames, blindSourceName, _emberTree, true, "", "GPO");
-                    
+
                     _emberTree.SetUpFinalListeners();
                     EmberTreeState = true;
                     log.Info("EmBER+ tree initiated");
@@ -178,7 +178,7 @@ namespace LarkspurEmberWebProvider
                 Value = message,
                 NumericPath = string.Join(".", path)
             });
-            Debug.WriteLine("Ember ", message);
+            //Debug.WriteLine("Ember ", message);
 
             // TODO: Persist tree
             //    return EventHandlerHelper.ThrottledEventHandler((sender, e) =>
@@ -297,7 +297,7 @@ namespace LarkspurEmberWebProvider
                 }
             }
         }
-        
+
         public void Set_NumberParameter(string path, int value)
         {
             if (_emberTree != null && path != null)
