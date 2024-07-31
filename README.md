@@ -52,28 +52,45 @@ The license for Larkspur Ember Web Provider is in the LICENSE.txt file
 ### Run and develop as a Microsoft Service
 
 The application contains a package:
+
 > Microsoft.Extensions.Hosting.WindowsServices
+
 that enables the application to be runned as a windows service.
 
 First build the application:
-> dotnet publish -r win-x64 -c Release
+
+```
+dotnet publish -r win-x64 -c Release
+```
 
 Then to get the service up and running use the windows service 'sc.exe' commands.
 Open an elevated powershell:
-> sc.exe create LarkspurService BinPath=C:\[path-to-repository]\larkspur-ember-plus-provider\src\LarkspurEmberWebProvider\bin\Release\netcoreapp3.1\win-x64\publish\LarkspurEmberWebProvider.exe
+
+```
+sc.exe create LarkspurService BinPath=C:\[path-to-repository]\larkspur-ember-plus-provider\src\LarkspurEmberWebProvider\bin\Release\netcoreapp3.1\win-x64\publish\LarkspurEmberWebProvider.exe
+```
 
 Then you should start the service:
-> sc.exe start LarkspurService
 
-Now you should be able to connect from EmberPLus Viewer (https://github.com/Lawo/ember-plus/releases) on localhost port 9003, or from a browser on localhost:5001
+```
+sc.exe start LarkspurService
+```
+
+Now you should be able to connect from EmberPlus Viewer (https://github.com/Lawo/ember-plus/releases) on localhost port 9003, or from a browser on localhost:5001
 
 #### To stop service and/or rebuild
 
 Stop service:
-> sc.exe start LarkspurService
+
+```
+sc.exe stop LarkspurService
+```
 
 Remove service:
-> sc.exe delete LarkspurService
+
+```
+sc.exe delete LarkspurService
+```
 
 Then build the application and run again as described above.
 
